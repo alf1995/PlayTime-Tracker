@@ -1,0 +1,25 @@
+{
+  "name": "playtime-tracker-decky",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "node scripts/sync_styles.mjs && rollup -c",
+    "typecheck": "node scripts/sync_styles.mjs && tsc --noEmit",
+    "test:backend": "python3 -m unittest discover -s tests -v",
+    "build:check": "npm run typecheck && npm run build && node --check dist/index.js && node scripts/smoke_frontend.mjs",
+    "build:offline": "node scripts/sync_styles.mjs && node scripts/build_frontend_offline.mjs",
+    "test:ui": "node scripts/smoke_frontend.mjs && node scripts/test_views.mjs"
+  },
+  "dependencies": {
+    "@decky/api": "^1.1.3"
+  },
+  "devDependencies": {
+    "@decky/rollup": "^1.0.2",
+    "@decky/ui": "^4.12.1",
+    "@types/react": "19.1.1",
+    "@types/react-dom": "19.1.1",
+    "rollup": "^4.53.3",
+    "typescript": "^5.6.2"
+  }
+}
